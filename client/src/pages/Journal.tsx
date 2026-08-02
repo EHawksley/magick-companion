@@ -19,13 +19,29 @@ interface JournalEntry {
   notes: string;
   aiFeedback: string | null;
   planetaryHour?: string;
+  hourNumber?: number;
+  isDay?: boolean;
   moonPhase?: string;
+  dayRuler?: string;
+  isPlanetDay?: boolean;
 }
 
 const RITUAL_TYPES = [
   'LBRP Practice',
   'Jupiter Prayer',
+  'Sun Prayer',
+  'Moon Prayer',
+  'Mercury Prayer',
+  'Venus Prayer',
+  'Mars Prayer',
+  'Saturn Prayer',
   'LBRP + Jupiter Prayer',
+  'LBRP + Sun Prayer',
+  'LBRP + Moon Prayer',
+  'LBRP + Mercury Prayer',
+  'LBRP + Venus Prayer',
+  'LBRP + Mars Prayer',
+  'LBRP + Saturn Prayer',
   'Meditation',
   'Talisman Consecration',
   'Study Session',
@@ -119,12 +135,20 @@ function EntryCard({ entry, onDelete }: { entry: JournalEntry; onDelete: (id: st
               </Badge>
               {entry.planetaryHour && (
                 <Badge variant="outline" className="text-xs border-border text-muted-foreground">
-                  {entry.planetaryHour} hour
+                  {entry.planetaryHour} hour{entry.hourNumber ? ` #${entry.hourNumber}` : ''}{entry.isDay === false ? ' · Night' : ''}
                 </Badge>
               )}
               {entry.moonPhase && (
                 <Badge variant="outline" className="text-xs border-border text-muted-foreground">
                   {entry.moonPhase}
+                </Badge>
+              )}
+              {entry.dayRuler && (
+                <Badge variant="outline" className={cn(
+                  'text-xs border-border',
+                  entry.isPlanetDay ? 'text-primary border-primary/30' : 'text-muted-foreground'
+                )}>
+                  {entry.dayRuler}&apos;s day{entry.isPlanetDay ? ' ✦' : ''}
                 </Badge>
               )}
             </div>
@@ -187,7 +211,11 @@ export default function Journal() {
         ritualType,
         notes: notes.trim(),
         planetaryHour: currentHour?.planet,
+        hourNumber: currentHour?.hourNumber,
+        isDay: currentHour?.isDay,
         moonPhase: moon.phaseName,
+        dayRuler: dayData.dayRuler,
+        isPlanetDay: currentHour?.planet === dayData.dayRuler,
       };
 
       toast.info('Getting mentor feedback...');

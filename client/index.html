@@ -6,7 +6,45 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Magick Companion</title>    
+    <title>Magick Companion</title>
+    <!-- Favicon — Jupiter glyph, unique to this app -->
+    <link rel="icon" type="image/x-icon" href="/magick-companion/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/magick-companion/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/magick-companion/icon-192.png" />
+    <!-- Open Graph / Social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ehawksley.github.io/magick-companion/" />
+    <meta property="og:title" content="Magick Companion" />
+    <meta property="og:description" content="Planetary hours, Jupiter talisman prayer, LBRP guide, and ritual journal for ceremonial magick practice." />
+    <meta name="description" content="Planetary hours, Jupiter talisman prayer, LBRP guide, and ritual journal for ceremonial magick practice." />
+    <!-- Theme color for browser chrome -->
+    <meta name="theme-color" content="#0D0D14" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Magick" />
+    <!-- GitHub Pages SPA routing fix: redirect /?/path back to /path -->
+    <script>
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+        // Also handle the /?/ format from 404.html
+        var l = window.location;
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&');
+          });
+          window.history.replaceState(
+            null, null,
+            l.pathname.slice(0, -1) + decoded[0] +
+            (decoded[1] ? '?' + decoded[1] : '') +
+            l.hash
+          );
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />

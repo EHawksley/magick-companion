@@ -22,11 +22,22 @@ import {
 } from '@/lib/planetaryHours';
 import { getMoonPhase } from '@/lib/moonPhase';
 import { cn } from '@/lib/utils';
+import { useLocation } from 'wouter';
+
+const PLANET_DAY_MESSAGES: Record<PlanetName, string> = {
+  Sun: 'Sunday — Day of the Sun. Ideal for vitality, success, authority, and health work.',
+  Moon: 'Monday — Day of the Moon. Ideal for intuition, dreams, emotional healing, and divination.',
+  Mercury: 'Wednesday — Day of Mercury. Ideal for communication, study, contracts, and travel.',
+  Venus: 'Friday — Day of Venus. Ideal for love, beauty, creative work, and harmony.',
+  Mars: 'Tuesday — Day of Mars. Ideal for protection, courage, and breaking through obstacles.',
+  Jupiter: "Thursday — Jupiter's Day. Your most powerful window for talisman work and abundance.",
+  Saturn: 'Saturday — Day of Saturn. Ideal for banishing, binding, and long-term foundation work.',
+};
 
 const PLANET_COLORS: Record<PlanetName, string> = {
   Sun: '#F59E0B',
   Moon: '#94A3B8',
-  Mercury: '#6EE7B7',
+  Mercury: '#F97316',
   Venus: '#F9A8D4',
   Mars: '#EF4444',
   Jupiter: '#C9A84C',
@@ -109,9 +120,33 @@ export default function Dashboard() {
   const timeStr = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true });
   const isJupiterHour = currentHour?.planet === 'Jupiter';
   const isJupiterDay = dayData?.dayRuler === 'Jupiter';
+  const [, navigate] = useLocation();
 
   return (
     <div className="min-h-screen p-4 lg:p-8">
+      {/* Planet Day Banner */}
+      {dayData && (
+        <div
+          className="mb-4 rounded-lg border px-4 py-3 flex items-center justify-between gap-3 cursor-pointer transition-all duration-300 hover:opacity-90"
+          style={{
+            borderColor: PLANET_COLORS[dayData.dayRuler] + '50',
+            background: PLANET_COLORS[dayData.dayRuler] + '12',
+          }}
+          onClick={() => navigate('/ritual')}
+        >
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="text-2xl shrink-0" style={{ color: PLANET_COLORS[dayData.dayRuler] }}>
+              {PLANET_INFO[dayData.dayRuler].glyph}
+            </span>
+            <p className="text-sm leading-snug" style={{ color: PLANET_COLORS[dayData.dayRuler] }}>
+              {PLANET_DAY_MESSAGES[dayData.dayRuler]}
+            </p>
+          </div>
+          <span className="text-xs shrink-0 font-display tracking-wider" style={{ color: PLANET_COLORS[dayData.dayRuler] + 'aa' }}>
+            Pray →
+          </span>
+        </div>
+      )}
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-start justify-between">
@@ -345,4 +380,3 @@ export default function Dashboard() {
     </div>
   );
 }
-

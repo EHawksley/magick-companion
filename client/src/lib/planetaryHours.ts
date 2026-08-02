@@ -42,7 +42,7 @@ export const PLANET_INFO: Record<PlanetName, PlanetInfo> = {
     number: 6,
     keywords: 'Vitality, success, authority, health, fame',
     description: 'The Sun governs life force, personal power, and achievement. Sunday is its day. Work with solar energy for confidence, career advancement, healing, and leadership.',
-    prayerAvailable: false,
+    prayerAvailable: true,
   },
   Moon: {
     name: 'Moon',
@@ -54,19 +54,19 @@ export const PLANET_INFO: Record<PlanetName, PlanetInfo> = {
     number: 9,
     keywords: 'Intuition, dreams, cycles, emotions, the subconscious',
     description: 'The Moon governs the tides of feeling, memory, and psychic sensitivity. Monday is its day. Work with lunar energy for divination, emotional healing, and dream work.',
-    prayerAvailable: false,
+    prayerAvailable: true,
   },
   Mercury: {
     name: 'Mercury',
     glyph: '☿',
     day: 'Wednesday',
-    color: 'Orange / Multi',
-    colorHex: '#6EE7B7',
+    color: 'Orange / Yellow',
+    colorHex: '#F97316',
     metal: 'Quicksilver',
     number: 8,
     keywords: 'Communication, intellect, travel, commerce, skill',
     description: 'Mercury governs the mind, language, and exchange of information. Wednesday is its day. Work with mercurial energy for writing, study, negotiation, and travel.',
-    prayerAvailable: false,
+    prayerAvailable: true,
   },
   Venus: {
     name: 'Venus',
@@ -78,7 +78,7 @@ export const PLANET_INFO: Record<PlanetName, PlanetInfo> = {
     number: 7,
     keywords: 'Love, beauty, harmony, pleasure, relationships',
     description: 'Venus governs attraction, art, and the pleasures of life. Friday is its day. Work with Venusian energy for love, friendship, creativity, and reconciliation.',
-    prayerAvailable: false,
+    prayerAvailable: true,
   },
   Mars: {
     name: 'Mars',
@@ -90,7 +90,7 @@ export const PLANET_INFO: Record<PlanetName, PlanetInfo> = {
     number: 5,
     keywords: 'Courage, conflict, energy, protection, will',
     description: 'Mars governs action, strength, and the will to overcome obstacles. Tuesday is its day. Work with Martian energy for protection, courage, and breaking through resistance.',
-    prayerAvailable: false,
+    prayerAvailable: true,
   },
   Jupiter: {
     name: 'Jupiter',
@@ -114,7 +114,7 @@ export const PLANET_INFO: Record<PlanetName, PlanetInfo> = {
     number: 3,
     keywords: 'Discipline, time, structure, karma, limits',
     description: 'Saturn governs discipline, long-term work, and the lessons of time. Saturday is its day. Work with Saturnian energy for binding, banishing, establishing firm foundations, and long-term planning.',
-    prayerAvailable: false,
+    prayerAvailable: true,
   },
 };
 
