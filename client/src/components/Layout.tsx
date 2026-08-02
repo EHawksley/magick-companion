@@ -27,11 +27,9 @@ export default function Layout({ children }: LayoutProps) {
         {/* Logo */}
         <div className="px-5 pt-7 pb-5">
           <div className="flex items-center gap-3">
-            <img
-              src="/manus-storage/magick-logo_6392b457.png"
-              alt="Magick Companion"
-              className="w-8 h-8 object-contain"
-            />
+            <div className="w-8 h-8 flex items-center justify-center rounded-full border border-primary/40 bg-primary/10 shrink-0">
+              <span className="font-display text-lg text-primary leading-none">♃</span>
+            </div>
             <div>
               <div className="font-display text-xs tracking-widest text-primary uppercase">Magick</div>
               <div className="font-display text-xs tracking-widest text-muted-foreground uppercase">Companion</div>
@@ -103,4 +101,3 @@ export default function Layout({ children }: LayoutProps) {
     </div>
   );
 }
-
